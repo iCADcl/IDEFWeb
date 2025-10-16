@@ -35,6 +35,8 @@ async def create_contact_submission(submission: ContactSubmissionCreate):
     - **message**: Detailed message
     """
     try:
+        contacts_collection = get_contacts_collection()
+        
         # Create contact submission object
         contact_data = ContactSubmission(
             **submission.model_dump(),
