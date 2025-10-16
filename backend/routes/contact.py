@@ -144,6 +144,8 @@ async def update_contact_status(submission_id: str, new_status: str):
     - **new_status**: New status (pending, reviewed, responded)
     """
     try:
+        contacts_collection = get_contacts_collection()
+        
         valid_statuses = ["pending", "reviewed", "responded"]
         if new_status not in valid_statuses:
             raise HTTPException(
