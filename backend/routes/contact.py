@@ -1,11 +1,10 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Depends
 from typing import List
 from models.contact import (
     ContactSubmission,
     ContactSubmissionCreate,
     ContactSubmissionResponse
 )
-from motor.motor_asyncio import AsyncIOMotorClient
 import os
 from datetime import datetime
 import logging
@@ -14,14 +13,14 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/contact", tags=["contact"])
 
-# Get database connection
-mongo_url = os.environ.get('MONGO_URL')
-if not mongo_url:
-    raise ValueError("MONGO_URL environment variable is not set")
+# Database will be accessed from the main server.py
+def get_db():
+    from server import db
+    return db
 
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ.get('DB_NAME', 'idef_db')]
-contacts_collection = db.contacts
+def get_contacts_collection():
+    db = get_db()
+    return db.contacts
 
 
 @router.post("", response_model=ContactSubmissionResponse, status_code=status.HTTP_201_CREATED)
