@@ -1,10 +1,10 @@
 import React from 'react';
-import { Dna, Cube, HardDrive, Scan } from 'lucide-react';
+import { Dna, Box, HardDrive, Scan } from 'lucide-react';
 import { innovationData } from '../mock';
 
 const iconMap = {
   Dna: Dna,
-  Cube: Cube,
+  Cube: Box,
   HardDrive: HardDrive,
   Scan: Scan
 };
