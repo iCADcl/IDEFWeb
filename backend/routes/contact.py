@@ -90,6 +90,8 @@ async def get_contact_submissions(
     - **status_filter**: Filter by status (pending, reviewed, responded)
     """
     try:
+        contacts_collection = get_contacts_collection()
+        
         query = {}
         if status_filter:
             query["status"] = status_filter
