@@ -115,6 +115,7 @@ async def get_contact_submission(submission_id: str):
     Get a specific contact submission by ID.
     """
     try:
+        contacts_collection = get_contacts_collection()
         submission = await contacts_collection.find_one({"id": submission_id})
         
         if not submission:
