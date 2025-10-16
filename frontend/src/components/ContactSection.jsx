@@ -31,16 +31,20 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      await submitContactForm(formData);
-      toast({
-        title: '¡Mensaje enviado!',
-        description: 'Nos pondremos en contacto contigo pronto.',
-      });
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      const response = await axios.post(`${BACKEND_URL}/api/contact`, formData);
+      
+      if (response.data.success) {
+        toast({
+          title: '¡Mensaje enviado!',
+          description: response.data.message || 'Nos pondremos en contacto contigo pronto.',
+        });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      }
     } catch (error) {
+      const errorMessage = error.response?.data?.detail || 'Hubo un problema al enviar el mensaje. Inténtalo de nuevo.';
       toast({
         title: 'Error',
-        description: 'Hubo un problema al enviar el mensaje. Inténtalo de nuevo.',
+        description: errorMessage,
         variant: 'destructive',
       });
     } finally {
