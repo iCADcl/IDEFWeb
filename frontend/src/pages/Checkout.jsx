@@ -14,7 +14,12 @@ import { useCart } from '../context/CartContext';
 import { useToast } from '../hooks/use-toast';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+
+// Load Stripe with Link disabled
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY, {
+  betas: [],
+  apiVersion: '2023-10-16',
+});
 
 const CARD_ELEMENT_OPTIONS = {
   style: {
