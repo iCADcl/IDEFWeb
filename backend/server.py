@@ -10,6 +10,8 @@ from typing import List
 import uuid
 from datetime import datetime, timezone
 from routes.contact import router as contact_router
+from routes.products import router as products_router
+from routes.checkout import router as checkout_router
 
 
 ROOT_DIR = Path(__file__).parent
