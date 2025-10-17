@@ -55,6 +55,12 @@ const Header = () => {
             >
               Formación
             </button>
+            <a
+              href="/tienda"
+              className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium"
+            >
+              Tienda
+            </a>
             <button
               onClick={() => scrollToSection('innovacion')}
               className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium"
