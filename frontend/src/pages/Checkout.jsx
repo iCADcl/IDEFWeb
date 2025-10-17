@@ -100,6 +100,12 @@ const CheckoutForm = () => {
             phone: formData.phone,
           },
         },
+        // Disable Link to force direct card payment
+        payment_method_options: {
+          card: {
+            setup_future_usage: null,
+          },
+        },
       });
 
       if (result.error) {
