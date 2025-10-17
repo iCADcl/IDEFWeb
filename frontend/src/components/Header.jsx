@@ -105,6 +105,12 @@ const Header = () => {
             >
               Formación
             </button>
+            <a
+              href="/tienda"
+              className="block w-full text-left py-2 px-4 text-gray-300 hover:text-cyan-400 hover:bg-slate-800 rounded transition-colors"
+            >
+              Tienda
+            </a>
             <button
               onClick={() => scrollToSection('innovacion')}
               className="block w-full text-left py-2 px-4 text-gray-300 hover:text-cyan-400 hover:bg-slate-800 rounded transition-colors"
