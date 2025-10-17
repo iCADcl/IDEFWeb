@@ -95,7 +95,7 @@ const CheckoutForm = () => {
 
       const clientSecret = data.client_secret;
 
-      // Confirm the card payment
+      // Confirm the card payment WITHOUT Link
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
@@ -105,12 +105,7 @@ const CheckoutForm = () => {
             phone: formData.phone,
           },
         },
-        // Disable Link to force direct card payment
-        payment_method_options: {
-          card: {
-            setup_future_usage: null,
-          },
-        },
+        return_url: window.location.origin + '/checkout/success',
       });
 
       if (result.error) {
