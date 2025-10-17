@@ -119,8 +119,12 @@ async def create_payment_intent(checkout_request: CheckoutRequest):
                 "customer_name": order.customer_name
             },
             description=f"Compra IDEF - {len(order.items)} producto(s)",
-            # Disable automatic payment methods like Link
-            automatic_payment_methods=None
+            # Completely disable Link
+            payment_method_options={
+                "card": {
+                    "request_three_d_secure": "automatic"
+                }
+            }
         )
         
         # Update order with payment intent ID
