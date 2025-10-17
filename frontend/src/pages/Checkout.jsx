@@ -32,6 +32,7 @@ const CARD_ELEMENT_OPTIONS = {
       iconColor: '#ef4444',
     },
   },
+  hidePostalCode: true, // Makes postal code optional
 };
 
 const CheckoutForm = () => {
