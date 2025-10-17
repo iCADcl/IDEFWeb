@@ -112,12 +112,15 @@ async def create_payment_intent(checkout_request: CheckoutRequest):
         payment_intent = stripe.PaymentIntent.create(
             amount=amount_cents,
             currency="usd",
+            payment_method_types=["card"],  # Only allow card payments
             metadata={
                 "order_id": order.id,
                 "customer_email": order.customer_email,
                 "customer_name": order.customer_name
             },
-            description=f"Compra IDEF - {len(order.items)} producto(s)"
+            description=f"Compra IDEF - {len(order.items)} producto(s)",
+            # Disable automatic payment methods like Link
+            automatic_payment_methods=None
         )
         
         # Update order with payment intent ID
