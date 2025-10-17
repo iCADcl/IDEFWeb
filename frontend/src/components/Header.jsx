@@ -96,6 +96,19 @@ const Header = () => {
             >
               Contacto
             </Button>
+            
+            {/* Cart Icon */}
+            <button
+              onClick={() => navigate('/carrito')}
+              className="relative text-white hover:text-cyan-400 transition-colors"
+            >
+              <ShoppingCart className="w-6 h-6" />
+              {getCartItemCount() > 0 && (
+                <Badge className="absolute -top-2 -right-2 bg-cyan-500 text-slate-950 text-xs px-1.5 min-w-[20px] h-5 flex items-center justify-center">
+                  {getCartItemCount()}
+                </Badge>
+              )}
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
