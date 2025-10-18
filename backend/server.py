@@ -12,6 +12,10 @@ from datetime import datetime, timezone
 from routes.contact import router as contact_router
 from routes.products import router as products_router
 from routes.checkout import router as checkout_router
+from routes.admin_auth import router as admin_auth_router
+from routes.admin_content import router as admin_content_router
+from routes.admin_orders import router as admin_orders_router
+from routes.admin_upload import router as admin_upload_router
 
 
 ROOT_DIR = Path(__file__).parent
