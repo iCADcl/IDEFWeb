@@ -6,24 +6,33 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 import { Toaster } from "./components/ui/sonner";
 import { CartProvider } from "./context/CartContext";
+import { AdminProvider } from "./context/AdminContext";
 
 function App() {
   return (
     <div className="App">
       <CartProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tienda" element={<Shop />} />
-            <Route path="/tienda/producto/:slug" element={<ProductDetail />} />
-            <Route path="/carrito" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/checkout/success" element={<CheckoutSuccess />} />
-          </Routes>
-        </BrowserRouter>
-        <Toaster />
+        <AdminProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/tienda" element={<Shop />} />
+              <Route path="/tienda/producto/:slug" element={<ProductDetail />} />
+              <Route path="/carrito" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/checkout/success" element={<CheckoutSuccess />} />
+              
+              {/* Admin Routes */}
+              <Route path="/admin" element={<AdminLogin />} />
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            </Routes>
+          </BrowserRouter>
+          <Toaster />
+        </AdminProvider>
       </CartProvider>
     </div>
   );
