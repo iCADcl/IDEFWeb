@@ -8,6 +8,8 @@ import Checkout from "./pages/Checkout";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminProducts from "./pages/admin/AdminProducts";
+import AdminOrders from "./pages/admin/AdminOrders";
 import { Toaster } from "./components/ui/sonner";
 import { CartProvider } from "./context/CartContext";
 import { AdminProvider } from "./context/AdminContext";
